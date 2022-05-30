@@ -5,6 +5,8 @@ describe('Test Suite for TODO List actions', () => {
     beforeEach(() => {
         cy.visit('http://todomvc-app-for-testing.surge.sh/')
         cy.get('.new-todo').type('Complete the Course{enter}')
+        //with timeout as example
+        //cy.get('.new-todo', {timeout: 6000}).type('Complete the Course{enter}')
     })
     
     it('Should have correct text and then be unchecked', () => {
