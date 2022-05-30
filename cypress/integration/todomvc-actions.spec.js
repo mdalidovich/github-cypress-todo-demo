@@ -1,19 +1,21 @@
 /// <reference types="Cypress" />
 
-describe('Test Suite for TODO List', () => {
+describe('Test Suite for TODO List actions', () => {
    
-    
-    it('Should add a new todo to the list', () => {
-
+    beforeEach(() => {
         cy.visit('http://todomvc-app-for-testing.surge.sh/')
         cy.get('.new-todo').type('Complete the Course{enter}')
+    })
+    
+    it('Should have correct text and then be unchecked', () => {
+               
         cy.get('label').should('have.text', 'Complete the Course')
         cy.get('.toggle').should('not.be.checked')
 
     })
 
    
-    it('Should clear completed todo', () => {
+    it('Should have correct css', () => {
         
         cy.get('.toggle').click()
         cy
@@ -26,7 +28,8 @@ describe('Test Suite for TODO List', () => {
     })
 
     it('Should mark todo as completed', () => {
-
+        
+        cy.get('.toggle').click()
         cy.contains('Clear').click()
         cy.get('.todo-list').should('not.have.descendants', 'li')
 
